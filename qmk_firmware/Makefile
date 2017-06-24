@@ -512,8 +512,7 @@ endif
 
 # All should compile everything
 .PHONY: all
-all: all-keyboards
-#all: all-keyboards test-all
+all: all-keyboards test-all
 
 # Define some shortcuts, mostly for compability with the old syntax
 .PHONY: all-keyboards
