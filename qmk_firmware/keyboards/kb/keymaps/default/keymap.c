@@ -1,17 +1,21 @@
 #include "kb.h"
 
-#define MODS_CTRL_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
+#define MODS_CTRL_MASK  (MOD_BIT(KC_LCTRL)|MOD_BIT(KC_RCTRL))
+#define MODS_SHIFT_MASK (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
+#define MODS_ALT_MASK   (MOD_BIT(KC_LALT)|MOD_BIT(KC_RALT))
+#define MODS_GUI_MASK   (MOD_BIT(KC_LGUI)|MOD_BIT(KC_RGUI))
+#define MODS_ALL_MASK   (MODS_CTRL_MASK|MODS_SHIFT_MASK|MODS_ALT_MASK|MODS_GUI_MASK)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* 0: Default layer
      *
      * ,-----------------------------------------------------------------------------------.
-     * |Esc~Fn1| F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10| F11| F12|PrtS|ScrL| Ins |
+     * |Esc^Fn1| F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10| F11| F12|PrtS|ScrL| Ins |
      * |-----------------------------------------------------------------------------------|
-     * | Esc~|  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |   \ |   ` | Home|
+     * |Esc^~|  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |   \ |   ` | Home|
      * |-----------------------------------------------------------------------------------|
-     * | Tab  |  Q |  W |  E |  R |  T |  Y |  U |  I |  O |  P |  [ |  ] | Back~Del | PgUp|
+     * | Tab  |  Q |  W |  E |  R |  T |  Y |  U |  I |  O |  P |  [ |  ] | Back^Del | PgUp|
      * |-----------------------------------------------------------------------------------|
      * |  Ctrl   |  A |  S |  D |  F |  G |  H |  J |  K |  L |  ; |  ' |    Return  | PgDn|
      * |-----------------------------------------------------------------------------------|
@@ -33,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * |       |GUI1|GUI2|GUI3|GUI4|GUI5|GUI6|GUI7|GUI8|GUI9|    |    |    |    |    | Mute|
      * |-----------------------------------------------------------------------------------|
-     * |     |    |    |    |    |    |    |    |    |    |    |    |    |     |     | Mute|
+     * | GRV |    |    |    |    |    |    |    |    |    |    |    |    |     |     | Mute|
      * |-----------------------------------------------------------------------------------|
-     * |      |    |    |    |    |    |    |    |    |    |    |    |    |          | Vol+|
+     * |      |    |    |    |    |    |    |    |    |    |    |    |    | Delete   | Vol+|
      * |-----------------------------------------------------------------------------------|
      * |         |    |    |    |    |    |Left| Dn | Up |Righ|    |    |            | Vol-|
      * |-----------------------------------------------------------------------------------|
@@ -46,8 +50,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
    KEYMAP(
       KC_TRNS, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET, KC_MUTE,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLU,
+      KC_GRV, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RESET, KC_MUTE,
+      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL, KC_VOLU,
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_VOLD,
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS,
       MO(1), MO(2), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END),
@@ -119,23 +123,25 @@ void led_set_user(uint8_t usb_led) {
 }
 
 enum function_id {
-   SHIFT_ESC,
-   SHIFT_BACKSPACE,
+   MOD_ESC,
+   MOD_BACKSPACE,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-   [0]  = ACTION_FUNCTION(SHIFT_ESC),
-   [1]  = ACTION_FUNCTION(SHIFT_BACKSPACE),
+   [0]  = ACTION_FUNCTION(MOD_ESC),
+   [1]  = ACTION_FUNCTION(MOD_BACKSPACE),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
-   switch (id) {
-      case SHIFT_ESC: {
-         static uint8_t shift_esc_shift_mask;
 
-         shift_esc_shift_mask = get_mods() & MODS_CTRL_MASK;
+   switch (id) {
+      case MOD_ESC: {
+         static uint8_t esc_mod_masked;
+
+         /* Any MOD flips ESC to GRV. */
+         esc_mod_masked = get_mods() & MODS_ALL_MASK;
          if (record->event.pressed) {
-            if (shift_esc_shift_mask) {
+            if (esc_mod_masked) {
                add_key(KC_GRV);
                send_keyboard_report();
             } else {
@@ -143,7 +149,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
                send_keyboard_report();
             }
          } else {
-            if (shift_esc_shift_mask) {
+            if (esc_mod_masked) {
                del_key(KC_GRV);
                send_keyboard_report();
             } else {
@@ -154,12 +160,19 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
          break;
       }
 
-      case SHIFT_BACKSPACE: {
-         static uint8_t shift_backspace_shift_mask;
+      case MOD_BACKSPACE: {
+         static uint8_t backspace_mod_masked;
 
-         shift_backspace_shift_mask = get_mods() & MODS_CTRL_MASK;
+         /*
+          * SHIFT flips backspace to delete.
+          *
+          * TODO This may not work when the WM interprets SHIFT+DEL as
+          * something other than just DEL. For example, Gnome uses
+          * SHIFT+DEL for deleting files.
+          */
+         backspace_mod_masked = get_mods() & MODS_SHIFT_MASK;
          if (record->event.pressed) {
-            if (shift_backspace_shift_mask) {
+            if (backspace_mod_masked) {
                add_key(KC_DEL);
                send_keyboard_report();
             } else {
@@ -167,7 +180,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
                send_keyboard_report();
             }
          } else {
-            if (shift_backspace_shift_mask) {
+            if (backspace_mod_masked) {
                del_key(KC_DEL);
                send_keyboard_report();
             } else {
