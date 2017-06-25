@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------------------------------.
      * |       |GUI1|GUI2|GUI3|GUI4|GUI5|GUI6|GUI7|GUI8|GUI9|    |    |    |    |    | Mute|
      * |-----------------------------------------------------------------------------------|
-     * | GRV |    |    |    |    |    |    |    |    |    |    |    |    |     |     | Mute|
+     * |  `  |    |    |    |    |    |    |    |    |    |    |    |    |     |     | Mute|
      * |-----------------------------------------------------------------------------------|
      * |      |    |    |    |    |    |    |    |    |    |    |    |    | Delete   | Vol+|
      * |-----------------------------------------------------------------------------------|
@@ -56,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS,
       MO(1), MO(2), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END),
 
-    /* 1: Control layer
+    /* 2: Control layer
      *
      * ,-----------------------------------------------------------------------------------.
      * |       |    |    |    |    |    |    |    |    |    |    |    |    |    |    | Mode|
