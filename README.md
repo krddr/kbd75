@@ -2,6 +2,8 @@
 
 The KBD75 is a 75% keyboard that is created and sold by [KBDFans](https://kbdfans.myshopify.com/). This repository explains how I setup my KBD75 (R3).
 
+![Dolch KBD75](https://github.com/krddr/kbd75/blob/master/images/keyboard-layout.png)
+
 ## Programming
 
 Start off by going to [qmkeyboard.cn](qmkeyboard.cn). This is a clone of [qmk.sized.io](qmk.sized.io) with support for the KBD75. Follow the steps in the [Programing Guide](http://github.com/krddr/kbd75/docs/kbd75_programing.pdf) to edit the key layout to your liking.
