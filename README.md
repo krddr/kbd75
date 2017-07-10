@@ -2,11 +2,11 @@
 
 The KBD75 is a 75% keyboard that is created and sold by [KBDFans](https://kbdfans.myshopify.com/). This repository explains how I setup my KBD75 (R3).
 
-![Dolch KBD75](https://github.com/krddr/kbd75/blob/master/images/keyboard-layout.png)
+![Dolch KBD75](images/keyboard-layout.png)
 
 ## Programming
 
-Start off by going to [qmkeyboard.cn](qmkeyboard.cn). This is a clone of [qmk.sized.io](qmk.sized.io) with support for the KBD75. Follow the steps in the [Programing Guide](http://github.com/krddr/kbd75/docs/kbd75_programing.pdf) to edit the key layout to your liking.
+Start off by going to [qmkeyboard.cn](http://qmkeyboard.cn). This is a clone of [qmk.sized.io](http://qmk.sized.io) with support for the KBD75. Follow the steps in the [Programing Guide](docs/kbd75_programing.pdf) to edit the key layout to your liking.
 
 The [QMK Documentation](https://docs.qmk.fm/keycodes.html) has a great description of each keycode. I found this [qmk-firmware Readme](https://github.com/joecridge/qmk-firmware) had an easy to read description of all of the different function types, like MO, LT, LG, etc.
 
@@ -35,13 +35,13 @@ I normally use a 60% or 65%, so I programmed the default layer of my 75% to have
     /* 0: Default layer
      *
      * ,-----------------------------------------------------------------------------------.
-     * |Esc^Fn1| F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10| F11| F12|PrtS|ScrL| Del |
+     * |Esc^Fn1| F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F10| F11| F12|PrtS|ScrL| Ins |
      * |-----------------------------------------------------------------------------------|
      * |Esc^~|  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |   \ |   ` | Home|
      * |-----------------------------------------------------------------------------------|
      * | Tab  |  Q |  W |  E |  R |  T |  Y |  U |  I |  O |  P |  [ |  ] | Backspace| PgUp|
      * |-----------------------------------------------------------------------------------|
-     * |  Ctrl   |  A |  S |  D |  F |  G |  H |  J |  K |  L |  ; |  ' |    Return  | PgDn|
+     * |  Ctrl   |  A |  S |  D |  F |  G |  H |  J |  K |  L |  ; |  ' |   Return   | PgDn|
      * |-----------------------------------------------------------------------------------|
      * |  Shift    |  Z |  X |  C |  V |  B |  N |  M |  , |  . |  / |   Shift  |    | End |
      * |-----------------------------------------------------------------------------------|
@@ -58,7 +58,7 @@ The first function layer is mostly used for volume adjustment, and Vim-style dir
      * |-----------------------------------------------------------------------------------|
      * |  `  |    |    |    |    |    |    |    |    |    |    |    |    |     |     | Mute|
      * |-----------------------------------------------------------------------------------|
-     * |      |    |    |    |    |    |    |    |    |    |    |    |    | Delete   | Vol+|
+     * |      |    |    |    |    |    |    |    |    |    |    |    |    |  Delete  | Vol+|
      * |-----------------------------------------------------------------------------------|
      * |         |    |    |    |    |    |Left| Dn | Up |Righ|    |    |            | Vol-|
      * |-----------------------------------------------------------------------------------|
