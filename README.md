@@ -6,7 +6,7 @@ The KBD75 is a 75% keyboard that is created and sold by [KBDFans](https://kbdfan
 
 ## Programming
 
-Start off by going to [qmkeyboard.cn](http://qmkeyboard.cn). This is a clone of [qmk.sized.io](http://qmk.sized.io) with support for the KBD75. Follow the steps in the [Programing Guide](docs/kbd75_programing.pdf) to edit the key layout to your liking.
+Start off by going to [qmkeyboard.cn](http://qmkeyboard.cn). This is a clone of [kbfirmware.com](http://kbfirmware.com) with support for the KBD75. Follow the steps in the [Programing Guide](docs/kbd75_programing.pdf) to edit the key layout to your liking.
 
 The [QMK Documentation](https://docs.qmk.fm/keycodes.html) has a great description of each keycode. I found this [qmk-firmware Readme](https://github.com/joecridge/qmk-firmware) had an easy to read description of all of the different function types, like MO, LT, LG, etc.
 
